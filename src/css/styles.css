@@ -3,13 +3,20 @@
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+  font-family: titan-one, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
     Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #fafafa;
   color: #212121;
   line-height: 1.5;
+
+  background:
+      linear-gradient(rgb(206, 193, 201), transparent 1px),
+      linear-gradient(90deg,
+        rgb(206, 193, 201), transparent 1px);
+    background-size: 10px 10px;
+    background-position: center center;
 }
 
 #search-box {
@@ -17,10 +24,18 @@ body {
   padding: 8px;
   max-width: 320px;
   margin-bottom: 16px;
+
+}
+
+#search-box:focus{
+ border: 2px solid darkgoldenrod;
+ border-radius: 2px;
+ outline: none;
 }
 
 .country-list{
-  list-style-type: armenian;
+  list-style-type: none;
+  padding: 0;
   gap: 10px;
 
 }
@@ -31,4 +46,37 @@ body {
   .country-list__icon{
   display: block;
   margin-right: 10;
+}
+
+.country-list__header{
+  font-family: "Titan One", cursive;
+  font-size: 18px;
+  color: darkgoldenrod;
+}
+
+.country-info{
+
+}
+.country-info--wrapper {
+display: flex;
+align-items: center;
+gap: 10px;}
+
+.country-info__header {
+  color:darkgoldenrod;
+  font-family: 'Titan One',cursive;
+font-size: 24px;
+font-weight: 400;
+margin: 0;
+}
+
+.country-info__list {
+list-style: none;
+padding: 0;
+font-family: "Titan-One", cursive;
+font-size: 20px;
+}
+
+.country-info__value{
+  color: darkgoldenrod;
 }

@@ -11,13 +11,13 @@ const refs = {
 refs.searchBox.addEventListener('input', debounce(onInput, DEBOUNCE_DELAY));
 export function countriesMarkupList(fields) {
 	const markUpListResult = fields
-		.map(({ flags: { svg }, name: name }) => {
+		.map(({ flags: { svg }, name: { common } }) => {
 			return `
         <li>
         <div class ='country-list__item'>
             <img src=${svg} width='30' height='20' class='country-list__icon'/>
-                <p>
-                    ${name}
+                <p class='country-list__header'>
+                    ${common}
                 </p>
             </div>
         </li>`;
@@ -27,34 +27,36 @@ export function countriesMarkupList(fields) {
 }
 
 export function oneCountryMarkup([aloneCountry]) {
-    const { flags: { svg },
-        name: name,
-        capital,
-        population,
-        languages: [languages]} = aloneCountry;
-    const aloneCountryResult = `
-    <div>
-        <img src='${svg}'/>
-        <h2>
-        ${name}
+	const {
+		flags: { svg },
+		name: { common },
+		capital,
+		population,
+		languages,
+	} = aloneCountry;
+	const aloneCountryResult = `
+    <div class='country-info--wrapper'>
+        <img src='${svg}' width ='30' height='20'/>
+        <h2 class='country-info__header'>
+        ${common}
         </h2>
     </div>    
-            <ul>
+            <ul class='country-info__list'>
                 <li>
-                    ${capital}
+                    Capital: <span class='country-info__value'>${capital}</span>
                 </li>
                 <li>
-                    ${population}
+                    population: <span class='country-info__value'>${population}</span>
                 </li>
                 <li>
-                    ${Object.key(languages).join(', ')}
+                    Languages: <span class='country-info__value'>${Object.values(languages).join(', ')}</span>
                 </li>
             </ul>
     `;
-    refs.countryDiv.insertAdjacentHTML(
-			'beforeend',
-			aloneCountryResult
-		);
-    
-    
+	refs.countryDiv.insertAdjacentHTML('beforeend', aloneCountryResult);
+}
+
+export function clearMarkup() {
+    refs.countryUl.innerHTML = '';
+	refs.countryDiv.innerHTML = '';
 }
