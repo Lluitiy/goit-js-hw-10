@@ -18,3 +18,17 @@ body {
   max-width: 320px;
   margin-bottom: 16px;
 }
+
+.country-list{
+  list-style-type: armenian;
+  gap: 10px;
+
+}
+.country-list__item{
+  display: flex;
+  align-items: center;
+}
+  .country-list__icon{
+  display: block;
+  margin-right: 10;
+}
